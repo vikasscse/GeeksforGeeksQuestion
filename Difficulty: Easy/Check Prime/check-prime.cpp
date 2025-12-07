@@ -1,0 +1,13 @@
+// User function Template for C++
+
+bool prime(int n) {
+
+    // Write your code here
+    if(n<2) return false;
+    // returns a boolean value
+    for(int i=2;i<=sqrt(n);i++)
+    {
+        if(n%i==0) return false;
+    }
+    return true;
+}
