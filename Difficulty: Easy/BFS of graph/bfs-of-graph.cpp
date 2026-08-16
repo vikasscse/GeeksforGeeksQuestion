@@ -2,14 +2,14 @@ class Solution {
   public:
     vector<int> bfs(vector<vector<int>> &adj) {
         // code here
-        bool visited[adj.size()]={0};
+        vector<bool>visited(adj.size(),0);
         vector<int>ans;
         queue<int>q;
         
         q.push(0);
         visited[0]=1;
-        
         int node;
+        
         while(!q.empty())
         {
             node=q.front();
@@ -20,8 +20,8 @@ class Solution {
             {
                 if(!visited[adj[node][i]])
                 {
-                    q.push(adj[node][i]);
                     visited[adj[node][i]]=1;
+                    q.push(adj[node][i]);
                 }
             }
         }
