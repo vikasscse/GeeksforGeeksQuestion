@@ -3,29 +3,37 @@ class Solution {
     int getLPSLength(string &s) {
         // code here
         int LPS[s.size()+1];
-        char str[s.size()+1];
+        char temp[s.size()+1];
+        
         for(int i=0;i<s.size();i++)
         {
-            str[i+1]=s[i];
+            temp[i+1]=s[i];
             LPS[i]=0;
         }
         LPS[s.size()]=0;
-        int first=0,second=2;
+        
+        int first=0;
+        int second=2;
+        
         while(second<=s.size())
         {
-            if(str[first+1]==str[second])
+            //if match
+            if(temp[first+1]==temp[second])
             {
                 LPS[second]=first+1;
-                first++; second++;
+                first++;
+                second++;
             }
             else
             {
-                if(first==0)
-                second++;
+                if(first!=0)
+                {
+                    first=LPS[first];
+                }
                 else
-                first=LPS[first];
+                second++;
             }
         }
-       return LPS[s.size()];
+        return LPS[s.size()];
     }
 };
